@@ -1,10 +1,5 @@
 #include "list.h"
 
-void createListChild(List2 &L) {
-    L.first = NULL;
-    L.last = NULL;
-}
-
 void createListBase(ListBase &L) {
     L.first = NULL;
     L.last = NULL;
@@ -34,16 +29,6 @@ connect CreateElmBase(address1 P, address2 Q) {
     return R;
 }
 
-void insertListChild(List2 &L, address2 P) {
-    if (L.first == NULL) {
-        L.first = P;
-        L.last = P;
-    } else {
-        P -> next = L.first;
-        L.first = P;
-    }
-}
-
 void insertBase(ListBase &L, connect R) {
     if (L.first == NULL) {
         L.first = R;
@@ -52,43 +37,6 @@ void insertBase(ListBase &L, connect R) {
         R -> next = L.first;
         L.first -> prev = R;
         L.first = R;
-    }
-}
-
-void deleteListParent(List1 &L, string st) {
-    address1 P = L.first;
-    P = findElmParent(L, st);
-    if (P -> prev == NULL) {
-        L.first = P -> next;
-        P -> next = NULL;
-        P -> prev = NULL;
-    } else if (P -> next != NULL && P -> prev != NULL) {
-        address1 Q = P -> prev;
-        Q -> next = P -> next;
-        P -> next -> prev = Q;
-        P -> next = NULL;
-        P -> prev = NULL; 
-    } else {
-        L.last = P -> prev;
-        P -> prev = NULL;
-        L.last -> next = NULL;
-    }
-}
-
-void deleteListChild(List2 &L, string st) {
-    address2 P;
-    while (findElmChild(L, st) != NULL) {
-        if (findElmChild(L, st) == L.first) {
-            P = L.first;
-            L.first = P -> next;
-            P -> next = NULL;
-            delete(P);
-        } else {
-            address2 Q = L.first;
-            while (P -> next -> next != NULL) {
-
-            }
-        }
     }
 }
 
@@ -132,22 +80,6 @@ void deleteBasebyCourse(ListBase &L, connect P) {
     }
 }
 
-address1 findElmParent(List1 &L, string X) {
-    address1 P = L.first;
-    while (P != NULL && P -> info.nama != X) {
-        P = P -> next;
-    }
-    return P;
-}
-
-address2 findElmChild(List2 &L, string X) {
-    address2 P = L.first;
-    while (P != NULL && P -> info.matkul != X) {
-        P = P -> next;
-    }
-    return P;
-}
-
 connect findElmBaseAll(ListBase &L, address1 P, address2 Q) {
     connect R = L.first;
     while (R != NULL && (R -> matkul != Q || R -> name != P)) {
@@ -170,24 +102,6 @@ connect findElmBasebyCourse(ListBase L, string x) {
         R = R -> next;
     }
     return R;
-}
-
-void printInfoParent(List1 L) {
-    address1 P = L.first;
-    while (P != NULL) {
-        cout << P -> info.nama << " " << P -> info.ID << endl;
-        P = P -> next;
-    }
-    cout << endl;
-}
-
-void printInfoChild(List2 L) {
-    address2 P = L.first;
-    while (P != NULL) {
-        cout << P -> info.matkul << " " << P -> info.dosen << endl;
-        P = P -> next;
-    }
-    cout << endl;
 }
 
 void printInfoBase(ListBase L) {

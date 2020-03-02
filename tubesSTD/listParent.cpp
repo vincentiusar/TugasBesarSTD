@@ -52,14 +52,19 @@ address1 findElmParent(List1 &L, string X) {
 void insertSortParent(List1 &L, infotypeParent st) {
     if (L.first == NULL) {
         insertFirstParent(L, CreateElmParent(st));
-    } else if (L.first -> info.ID > st.ID) {
+        cout << "Program Run Success! [Press Enter to Continue]. . .";
+    } else if (L.first -> info.ID > st.ID && findElmParent(L, st.ID)) {
         insertFirstParent(L, CreateElmParent(st));
+        cout << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (findElmParent(L, st.ID) == NULL) {
         address1 P = L.first;
         do {
             P = P -> next;
         } while (P != L.first && P -> info.ID < st.ID);
         insertAfterParent(L, P -> prev, CreateElmParent(st));
+        cout << "Program Run Success! [Press Enter to Continue]. . .";
+    } else {
+        cout << "Maaf, mata kuliah sudah terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";            
     }
 }
 
@@ -98,19 +103,18 @@ void deleteLastParent(List1 &L, address1 &P) {
 void deleteListParent(List1 &L, string st) {
     address1 P = L.first;
     P = findElmParent(L, st);
-    if (P -> prev == NULL) {
-        L.first = P -> next;
-        P -> next = NULL;
-        P -> prev = NULL;
+    if (P = L.first) {
+        deleteFirstParent(L, P);
     } else if (P -> next != NULL && P -> prev != NULL) {
-        address1 Q = P -> prev;
-        Q -> next = P -> next;
-        P -> next -> prev = Q;
-        P -> next = NULL;
-        P -> prev = NULL;
-    } else {
-        L.last = P -> prev;
-        P -> prev = NULL;
-        L.last -> next = NULL;
+        deleteAfterParent(L, P -> prev, P);
     }
+}
+
+void printInfoParent(List1 L) {
+    address1 P = L.first;
+    do {
+        cout << P -> info.nama << " " << P -> info.ID << endl;
+        P = P -> next;
+    } while (P != L.first);
+    cout << endl;
 }

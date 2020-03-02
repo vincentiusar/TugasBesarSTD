@@ -2,13 +2,14 @@
 
 int main() {
     int choice = 0;
-    string name, mata, dosen, kelas;
-    List1 nama;
-    List2 matkul;
+    infotypeParent parent;
+    infotypeChild child;
+    List1 mahasiswa;
+    List2 matakuliah;
     ListBase Base;
     connect R;
-    createListParent(nama);
-    createListChild(matkul);
+    createListParent(mahasiswa);
+    createListChild(matakuliah);
     createListBase(Base);
     cout << "Selamat Datang di Mesin Otomatis!!" << endl;
     do {
@@ -32,40 +33,30 @@ int main() {
             cleared();
             cout << "Masukkan nama : ";
             cin.get();
-            getline(cin, name);
+            getline(cin, parent.nama);
             cout << "Masukkan kelas anda : ";
-            getline(cin, kelas);
-            if (findElmParent(nama, name) == NULL) {
-                insertListParent(nama, CreateElmParent(name, kelas));
-                cout << "Program Run Success! [Press Enter to Continue]. . .";
-            } else {
-                cout << "Maaf, mata kuliah sudah terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";            
-            }
+            getline(cin, parent.ID);
+            insertSortParent(mahasiswa, parent);
             cin.get();
             break;
         case 2:
             cleared();
             cout << "Masukkan mata kuliah : ";
             cin.get();
-            getline(cin, mata);
+            getline(cin, child.matkul);
             cout << "Masukkan dosen anda : ";
-            getline(cin, dosen);
-            if (findElmChild(matkul, mata) == NULL) {
-                insertListChild(matkul, CreateElmChild(mata, dosen));
-                cout << "Program Run Success! [Press Enter to Continue]. . .";
-            } else {
-                cout << "Maaf, mata kuliah sudah terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";            
-            }
+            getline(cin, child.dosen);
+            insertSortChild(matakuliah, child);
             cin.get();
             break;
         case 3:
             cleared();
             cout << "Masukkan nama anda : ";
-            cin >> name;
+            getline(cin, parent.nama);
             cout << "Anda mengambil mata kuliah : ";
-            cin >> mata;
-            if (findElmParent(nama, name) != NULL && findElmChild(matkul, mata) != NULL && findElmBaseAll(Base, findElmParent(nama, name), findElmChild(matkul, mata)) == NULL) {
-                insertBase(Base, CreateElmBase(findElmParent(nama, name), findElmChild(matkul, mata)));
+            getline(cin, child.matkul);
+            if (findElmParent(mahasiswa, parent.nama) != NULL && findElmChild(matakuliah, child.matkul) != NULL && findElmBaseAll(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)) == NULL) {
+                insertBase(Base, CreateElmBase(findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Maaf, anda tidak terdaftar dalam mahasiswa atau mata kuliah tidak terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
@@ -76,11 +67,11 @@ int main() {
         case 4:
             cleared();
             cout << "Masukkan nama : ";
-            cin >> name;
-            if (findElmParent(nama, name) != NULL) {
-                deleteListParent(nama, name);
-                if (findElmBasebyName(Base, name) != NULL) {
-                    deleteBasebyName(Base, findElmBasebyName(Base, name));
+            getline(cin, parent.nama);
+            if (findElmParent(mahasiswa, parent.nama) != NULL) {
+                deleteListParent(mahasiswa, parent.nama);
+                if (findElmBasebyName(Base, parent.nama) != NULL) {
+                    deleteBasebyName(Base, findElmBasebyName(Base, parent.nama));
                 }
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
             } else {
@@ -92,11 +83,11 @@ int main() {
         case 5:
             cleared();
             cout << "Masukkan mata kuliah : ";
-            cin >> mata;
-            if (findElmChild(matkul, mata) != NULL) {
-                deleteListChild(matkul, mata);
-                if (findElmBasebyCourse(Base, mata) != NULL) {
-                    deleteBasebyName(Base, findElmBasebyCourse(Base, mata));
+            getline(cin, child.matkul);
+            if (findElmChild(matakuliah, child.matkul) != NULL) {
+                deleteListChild(matakuliah, child.matkul);
+                if (findElmBasebyCourse(Base, child.matkul) != NULL) {
+                    deleteBasebyName(Base, findElmBasebyCourse(Base, child.matkul));
                 }
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
             } else {
@@ -108,10 +99,10 @@ int main() {
         case 6:
             cleared();
             cout << "Masukkan nama : ";
-            cin >> name;
+            getline(cin, parent.nama);
             cout << "Masukkan mata kuliah : ";
-            cin >> mata;
-            R = findElmBaseAll(Base, findElmParent(nama, name), findElmChild(matkul, mata));
+            getline(cin, child.matkul);
+            R = findElmBaseAll(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul));
             if (R != NULL) {
                 deleteBasebyName(Base, R);
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
@@ -123,14 +114,14 @@ int main() {
             break;
         case 7:
             cleared();
-            printInfoParent(nama);
+            printInfoParent(mahasiswa);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
             cin.get();
             cin.get();
             break;
         case 8:
             cleared();
-            printInfoChild(matkul);
+            printInfoChild(matakuliah);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
             cin.get();
             cin.get();
@@ -145,9 +136,9 @@ int main() {
         case 10:
             cleared();
             cout << "Masukkan mata kuliah : ";
-            cin >> mata;
-            if (findElmBasebyCourse(Base, mata) != NULL) {
-                cout << nilaiMedianMatkul(Base, mata);
+            getline(cin, child.matkul);
+            if (findElmBasebyCourse(Base, child.matkul) != NULL) {
+                cout << nilaiMedianMatkul(Base, child.matkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
@@ -158,9 +149,9 @@ int main() {
         case 11:
             cleared();
             cout << "Masukkan mata kuliah : ";
-            cin >> mata;
-            if (findElmBasebyCourse(Base, mata) != NULL) {
-                cout << nilaiRerata(Base, mata);
+            getline(cin, child.matkul);
+            if (findElmBasebyCourse(Base, child.matkul) != NULL) {
+                cout << nilaiRerata(Base, child.matkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
@@ -170,8 +161,8 @@ int main() {
             break;
         case 12:
             cleared();
-            printInfoParent(nama);
-            printInfoChild(matkul);
+            printInfoParent(mahasiswa);
+            printInfoChild(matakuliah);
             printInfoBase(Base);
             cin.get();
             cout << "Program Run Success! [Press Enter to Continue]. . .";

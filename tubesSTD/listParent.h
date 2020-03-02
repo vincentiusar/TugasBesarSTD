@@ -1,8 +1,6 @@
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
-
 
 struct infotypeParent {
     string nama;
@@ -22,7 +20,7 @@ struct List1 {
 };
 
 void createListParent(List1 &L);
-address1 CreateElmParent(string ID, string nama);
+address1 CreateElmParent(infotypeParent st);
 void insertFirstParent(List1 &L, address1 P);
 void insertAfterParent(List1 &L, address1 Prec, address1 P);
 void insertLastParent(List1 &L, address1 P);
