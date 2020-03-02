@@ -1,7 +1,7 @@
 #include "list.h"
 
-void hitungIndex(connect R) {
-    float rata = (R -> info.kuis * (20 /100) + R -> info.uts * (40 / 100) + R -> info.uas * (40 / 100));
+void hitungIndex(connect &R) {
+    float rata = (R -> info.kuis * (0.2) + R -> info.uts * (0.4) + R -> info.uas * (0.4));
     if (rata >= 80) {
         R -> info.Index = "A";
     } else if (rata < 80 && rata >= 70) {
@@ -25,7 +25,7 @@ float nilaiMedianMatkul(ListBase L, string st) {
     connect P = L.first;
     while (P != NULL) {
         if (P -> matkul -> info.matkul == st) {
-            arr[i] = (P -> info.kuis * (20 /100) + P -> info.uts * (40 / 100) + P -> info.uas * (40 / 100));
+            arr[i] = (P -> info.kuis * (0.2) + P -> info.uts * (0.4) + P -> info.uas * (0.4));
             i++;
         }
         P = P -> next;
@@ -43,7 +43,7 @@ float nilaiRerata(ListBase L, string st) {
     int nData = 0;
     while (P != NULL) {
         if (P -> matkul -> info.matkul == st) {
-            sum += (P -> info.kuis * (20 /100) + P -> info.uts * (40 / 100) + P -> info.uas * (40 / 100));
+            sum += (P -> info.kuis * (0.2) + P -> info.uts * (0.4) + P -> info.uas * (0.4));
             nData++;
         }
         P = P -> next;

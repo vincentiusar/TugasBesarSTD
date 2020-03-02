@@ -1,12 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+#include "listParent.h"
 
 using namespace std;
-
-struct infotypeParent {
-    string nama;
-    string kelas;
-};
 
 struct infotypeChild {
     string matkul;
@@ -21,19 +17,11 @@ struct infotypeBase {
 };
 
 typedef struct child *address2;
-typedef struct parent *address1;
 typedef struct Base *connect;
-
-struct parent {
-    infotypeParent info;
-    address1 next;
-    address1 prev;
-};
 
 struct child {
     infotypeChild info;
     address2 next;
-    address2 prev;
 };
 
 struct Base {
@@ -42,11 +30,6 @@ struct Base {
     connect next;
     connect prev;
     infotypeBase info;
-};
-
-struct List1 {
-    address1 first;
-    address1 last;
 };
 
 struct List2 {
@@ -59,10 +42,8 @@ struct ListBase {
     connect last;
 };
 
-void createListParent(List1 &L);
 void createListChild(List2 &L);
 void createListBase(ListBase &L);
-address1 CreateElmParent(string nama, string kelas);
 address2 CreateElmChild(string matkul, string dosen);
 connect CreateElmBase(address1 P, address2 Q);
 void insertListParent(List1 &L, address1 P);
@@ -82,5 +63,5 @@ void printInfoChild(List2 L);
 void printInfoBase(ListBase L);
 float nilaiMedianMatkul(ListBase L, string st);
 float nilaiRerata(ListBase L, string st);
-void hitungIndex(connect R);
+void hitungIndex(connect &R);
 void cleared();
