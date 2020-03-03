@@ -56,7 +56,7 @@ int main() {
             getline(cin, parent.ID);
             cout << "Anda mengambil mata kuliah : ";
             getline(cin, child.matkul);
-            if (findElmParent(mahasiswa, parent.ID) != NULL && findElmChild(matakuliah, child.matkul) != NULL && findElmBase(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)) == NULL) {
+            if (findElmParent(mahasiswa, parent.ID) != NULL && findElmChild(matakuliah, child.matkul) != NULL || findElmBase(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)) == NULL) {
                 insertBase(Base, CreateElmBase(findElmParent(mahasiswa, parent.ID), findElmChild(matakuliah, child.matkul)));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
             } else {
@@ -90,7 +90,7 @@ int main() {
                 cout << "Maaf. Anda pilih apa?\n\n";
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
                 cin.get();
-            }    
+            }
             break;
         case 5:
             cleared();
