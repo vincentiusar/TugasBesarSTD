@@ -32,7 +32,7 @@ void insertSortChild(List2 &L, infotypeChild st) {
     if (P == NULL) {
         insertFirstChild(L, CreateElmChild(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
-    } else if (P -> info.matkul > st.matkul && findElmChild(L, st.matkul)) {
+    } else if (P -> info.matkul > st.matkul && findElmChild(L, st.matkul) == NULL) {
         insertFirstChild(L, CreateElmChild(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (findElmChild(L, st.matkul) == NULL) {
@@ -80,19 +80,21 @@ void deleteLastChild(List2 &L, address2 &P) {
 }
 
 void deleteListChild(List2 &L, string st) {
-    address2 P = findElmChild(L, st);
-    if (P == L.first) {
-        deleteFirstChild(L, P);
-    } else if (P -> next != NULL) {
-        P = L.first;
-        address2 Q;
-        while (P != NULL && P -> info.matkul != st) {
-            Q = P;
-            P = P -> next;
+    if (L.first != NULL) { 
+        address2 P = findElmChild(L, st);
+        if (P == L.first) {
+            deleteFirstChild(L, P);
+        } else if (P -> next != NULL) {
+            P = L.first;
+            address2 Q;
+            while (P != NULL && P -> info.matkul != st) {
+                Q = P;
+                P = P -> next;
+            }
+            deleteAfterChild(L, Q, P);
+        } else if (P = L.last) {
+            deleteLastChild(L, P);
         }
-        deleteAfterChild(L, Q, P);
-    } else if (P = L.last) {
-        deleteLastChild(L, P);
     }
 }
 

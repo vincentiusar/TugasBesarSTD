@@ -1,4 +1,4 @@
-#include "list.h"
+#include "listBase.h"
 
 void hitungIndex(connect &R) {
     float rata = (R -> info.kuis * (0.2) + R -> info.uts * (0.4) + R -> info.uas * (0.4));

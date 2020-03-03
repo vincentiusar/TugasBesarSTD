@@ -42,11 +42,18 @@ void insertlastParent(List1 &L, address1 P) {
 }
 
 address1 findElmParent(List1 &L, string X) {
-    address1 P = L.first;
-    while (P != NULL && P -> info.nama != X) {
-        P = P -> next;
+    if (L.first != NULL) {
+        address1 P = L.first;
+        do {
+            P = P -> next;
+        } while (P != L.first && P -> info.ID != X);
+        if (P == L.first && P -> info.ID != X) {
+            return NULL;
+        } else {
+            return P;
+        }
     }
-    return P;
+    return NULL;
 }
 
 void insertSortParent(List1 &L, infotypeParent st) {
@@ -101,12 +108,13 @@ void deleteLastParent(List1 &L, address1 &P) {
 }
 
 void deleteListParent(List1 &L, string st) {
-    address1 P = L.first;
-    P = findElmParent(L, st);
-    if (P = L.first) {
-        deleteFirstParent(L, P);
-    } else if (P -> next != NULL && P -> prev != NULL) {
-        deleteAfterParent(L, P -> prev, P);
+    address1 P = findElmParent(L, st);
+    if (P != NULL) {
+        if (P = L.first) {
+            deleteFirstParent(L, P);
+        } else if (P -> next != NULL && P -> prev != NULL) {
+            deleteAfterParent(L, P -> prev, P);
+        }
     }
 }
 
