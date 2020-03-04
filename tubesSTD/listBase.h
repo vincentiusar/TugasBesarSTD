@@ -30,13 +30,18 @@ struct ListBase {
 void createListBase(ListBase &L);
 connect CreateElmBase(address1 P, address2 Q);
 void insertBase(ListBase &L, connect R);
-void deleteBasebyName(ListBase &L, connect P);
-void deleteBasebyCourse(ListBase &L, connect P);
-void deleteListBase(ListBase &L, connect P, connect Q);
-connect findElmBasebyName(ListBase L, string X);
-connect findElmBasebyCourse(ListBase L, string x);
-connect findElmBase(ListBase &L, address1 P, address2 Q);
+void deleteFirstBase(ListBase &L, connect &R);
+void deleteAfterBase(ListBase &L, connect Prec, connect &P);
+void deleteLastBase(ListBase &L, connect &R);
+void callDeleteBase(ListBase &L, connect &R);
+void deleteListBase1(ListBase &L, connect P, connect Q);
+void deleteListBase2(ListBase &L, connect P, connect Q);
+connect findElmBase1(ListBase &L, address1 P, address2 Q);
+connect findElmBase2(ListBase &L, address1 P, address2 Q);
 void printInfoBase(ListBase L);
+
+//-----------------------
+
 float nilaiMedianMatkul(ListBase L, string st);
 float nilaiRerata(ListBase L, string st);
 void hitungIndex(connect &R);

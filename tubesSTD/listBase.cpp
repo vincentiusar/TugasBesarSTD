@@ -66,11 +66,11 @@ void callDeleteBase(ListBase &L, connect &R) {
     }
 }
 
-void deleteListBase(ListBase &L, connect P, connect Q) {
+void deleteListBase1(ListBase &L, connect P, connect Q) {
     if (P == NULL && Q == NULL) {
         cout << "Maaf, nama tidak ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (Q == NULL) {
-        connect R = findElmBase(L, P -> name, NULL);
+        connect R = findElmBase1(L, P -> name, NULL);
         if (R != NULL) {
             callDeleteBase(L, R);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
@@ -78,15 +78,19 @@ void deleteListBase(ListBase &L, connect P, connect Q) {
             cout << "Maaf, nama tidak ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
         }
     } else if (P == NULL) {
-        connect R = findElmBase(L, NULL, Q -> matkul);
+        connect R = findElmBase1(L, NULL, Q -> matkul);
         if (R != NULL) {    
             callDeleteBase(L, R);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
         } else {
             cout << "Maaf, nama tidak ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
         }
-    } else if (P != NULL && Q != NULL) {    
-        connect R = findElmBase(L, P -> name, Q -> matkul);
+    } 
+}
+
+void deleteListBase2(ListBase &L, connect P, connect Q) {
+    if (P != NULL && Q != NULL) {    
+        connect R = findElmBase2(L, P -> name, Q -> matkul);
         if (R != NULL) {
             callDeleteBase(L, R);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
@@ -96,7 +100,7 @@ void deleteListBase(ListBase &L, connect P, connect Q) {
     }
 }
 
-connect findElmBase(ListBase &L, address1 P, address2 Q) {
+connect findElmBase1(ListBase &L, address1 P, address2 Q) {
     if (Q == NULL) {
         connect R = L.first;
         while (R != NULL && R -> name -> info.ID != P -> info.ID) {
@@ -109,12 +113,16 @@ connect findElmBase(ListBase &L, address1 P, address2 Q) {
             R = R -> next;
         }
         return R;
-    } else if (P != NULL && Q != NULL) {
+    }
+    return NULL;
+}
+
+connect findElmBase2(ListBase &L, address1 P, address2 Q) {
+    if (P != NULL && Q != NULL) {
         connect R = L.first;
         while (R != NULL && (R -> matkul != Q || R -> name != P)) {
             R = R -> next;
         }
-        cout << "ya";
         return R;
     }
     return NULL;

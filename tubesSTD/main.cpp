@@ -56,18 +56,17 @@ int main() {
             getline(cin, parent.ID);
             cout << "Anda mengambil mata kuliah : ";
             getline(cin, child.matkul);
-            if (findElmParent(mahasiswa, parent.ID) != NULL && findElmChild(matakuliah, child.matkul) != NULL || findElmBase(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)) == NULL) {
+            if (findElmParent(mahasiswa, parent.ID) != NULL && findElmChild(matakuliah, child.matkul) != NULL && findElmBase2(Base, findElmParent(mahasiswa, parent.nama), findElmChild(matakuliah, child.matkul)) == NULL) {
                 insertBase(Base, CreateElmBase(findElmParent(mahasiswa, parent.ID), findElmChild(matakuliah, child.matkul)));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Maaf, anda tidak terdaftar dalam mahasiswa atau mata kuliah tidak terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
             }
             cin.get();
-            cin.get();
             break;
         case 4:
             cleared();
-            cout << "Menghapus 1. mahasiswa / 2. matakuliah (pilih 1 / 2) : ";
+            cout << "Menghapus 1. mahasiswa / 2. matakuliah \n(pilih 1 / 2) : ";
             cin >> st;
             if (st == "1") {
                 cleared();
@@ -75,7 +74,7 @@ int main() {
                 cin.get();
                 getline(cin, parent.ID);
                 deleteListParent(mahasiswa, parent.ID);
-                deleteListBase(Base, findElmBase(Base, findElmParent(mahasiswa, parent.ID), NULL), NULL);
+                deleteListBase1(Base, findElmBase1(Base, findElmParent(mahasiswa, parent.ID), NULL), NULL);
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
                 cin.get();
             } else if (st == "2") {
@@ -84,7 +83,7 @@ int main() {
                 cin.get();
                 getline(cin, child.matkul);
                 deleteListChild(matakuliah, child.matkul);
-                deleteListBase(Base, NULL, findElmBase(Base, NULL, findElmChild(matakuliah, child.matkul)));
+                deleteListBase1(Base, NULL, findElmBase1(Base, NULL, findElmChild(matakuliah, child.matkul)));
                 cin.get();
             } else {
                 cout << "Maaf. Anda pilih apa?\n\n";
@@ -99,7 +98,7 @@ int main() {
             getline(cin, parent.ID);
             cout << "Masukkan mata kuliah : ";
             getline(cin, child.matkul);
-            deleteListBase(Base, findElmBase(Base, findElmParent(mahasiswa, parent.ID), NULL), findElmBase(Base, NULL, findElmChild(matakuliah, child.matkul)));
+            deleteListBase2(Base, findElmBase1(Base, findElmParent(mahasiswa, parent.ID), NULL), findElmBase1(Base, NULL, findElmChild(matakuliah, child.matkul)));
             cin.get();
             break;
         case 6:
@@ -126,8 +125,9 @@ int main() {
         case 9:
             cleared();
             cout << "Masukkan mata kuliah : ";
+            cin.get();
             getline(cin, child.matkul);
-            if (findElmBase(Base, NULL, findElmChild(matakuliah, child.matkul)) != NULL) {
+            if (findElmBase1(Base, NULL, findElmChild(matakuliah, child.matkul)) != NULL) {
                 cout << nilaiMedianMatkul(Base, child.matkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
@@ -139,8 +139,9 @@ int main() {
         case 10:
             cleared();
             cout << "Masukkan mata kuliah : ";
+            cin.get();
             getline(cin, child.matkul);
-            if (findElmBase(Base, NULL, findElmChild(matakuliah, child.matkul)) != NULL) {
+            if (findElmBase1(Base, NULL, findElmChild(matakuliah, child.matkul)) != NULL) {
                 cout << nilaiRerata(Base, child.matkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
