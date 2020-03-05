@@ -17,6 +17,7 @@ void hitungIndex(connect &R) {
     } else {
         R -> info.Index = "E";
     }
+    R -> info.rerata = rata;
 }
 
 float nilaiMedianMatkul(ListBase L, string st) {

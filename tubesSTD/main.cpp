@@ -12,19 +12,19 @@ int main() {
     createListParent(mahasiswa);
     createListChild(matakuliah);
     createListBase(Base);
-    cout << "Selamat Datang di Mesin Otomatis!!" << endl;
+    cout << "Selamat Datang di Mesin Otomatis!!\nPenjelasan Nanti Dibuat\n\n[Press Enter to Continue]. . .";
+    cin.get();
     do {
+        cleared();
         cout<<"Menu"<<endl;
         cout<<"1. insert list nama"<<endl;
         cout<<"2. insert list mata kuliah"<<endl;
         cout<<"3. insert data mahasiswa yang mengambil mata kuliah dan nilainya"<<endl;
         cout<<"4. delete nama / mata kuliah mahasiswa"<<endl;
         cout<<"5. delete data mahasiswa dengan mata kuliah"<<endl;
-        cout<<"6. print list mahasiswa"<<endl;
-        cout<<"7. print list mata kuliah"<<endl;
-        cout<<"8. print semua data mahasiswa dengan mata kuliah dan nilai"<<endl;
-        cout<<"9. mencari median matkul"<<endl;
-        cout<<"10. mencari rata-rata nilai matkul"<<endl;
+        cout<<"6. print mahasiswa terdaftar / mata kuliah terdaftar / Data Lengkap Mahasiswa"<<endl;
+        cout<<"7. mencari median matkul"<<endl;
+        cout<<"8. mencari rata-rata nilai matkul"<<endl;
         cout<<"0. Exit"<<endl;
         cout<<"input choice: ";
         cin >> choice;
@@ -103,26 +103,20 @@ int main() {
             break;
         case 6:
             cleared();
-            printInfoParent(mahasiswa);
+            cout << "1. Mencetak List Mahasiswa / 2. Mata Kuliah / 3. Data Lengkap Mahasiswa \n(1 / 2 / 3) : ";
+            cin >> st;
+            if (st == "1") {
+                printInfoParent(mahasiswa);
+            } else if (st == "2") {
+                printInfoChild(matakuliah);
+            } else if (st == "3") {
+                printInfoBase(Base);
+            }
             cout << "Program Run Success! [Press Enter to Continue]. . .";
             cin.get();
             cin.get();
             break;
         case 7:
-            cleared();
-            printInfoChild(matakuliah);
-            cout << "Program Run Success! [Press Enter to Continue]. . .";
-            cin.get();
-            cin.get();
-            break;
-        case 8:
-            cleared();
-            printInfoBase(Base);
-            cout << "Program Run Success! [Press Enter to Continue]. . .";
-            cin.get();
-            cin.get();
-            break;
-        case 9:
             cleared();
             cout << "Masukkan mata kuliah : ";
             cin.get();
@@ -134,9 +128,8 @@ int main() {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
             }
             cin.get();
-            cin.get();
             break;
-        case 10:
+        case 8:
             cleared();
             cout << "Masukkan mata kuliah : ";
             cin.get();
@@ -148,9 +141,8 @@ int main() {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
             }
             cin.get();
-            cin.get();
             break;
-        case 11:
+        case 9:
             cleared();
             printInfoParent(mahasiswa);
             printInfoChild(matakuliah);

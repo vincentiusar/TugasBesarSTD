@@ -100,9 +100,11 @@ void deleteListChild(List2 &L, string st) {
 
 void printInfoChild(List2 L) {
     address2 P = L.first;
+    int i = 1;
     while (P != NULL) {
-        cout << P -> info.matkul << " " << P -> info.dosen << endl;
+        cout << i << ".\nMata Kuliah\t: " << P -> info.matkul << "\nDosen\t\t: " << P -> info.dosen << endl;
         P = P -> next;
+        i++;
     }
     cout << endl;
 }

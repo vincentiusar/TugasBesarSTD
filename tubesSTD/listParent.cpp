@@ -1,6 +1,5 @@
 #include "listParent.h"
 
-
 void createListParent(List1 &L) {
     L.first = NULL;
 }
@@ -60,7 +59,7 @@ void insertSortParent(List1 &L, infotypeParent st) {
     if (L.first == NULL) {
         insertFirstParent(L, CreateElmParent(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
-    } else if (L.first -> info.ID > st.ID && findElmParent(L, st.ID)) {
+    } else if (L.first -> info.ID > st.ID && findElmParent(L, st.ID) == NULL) {
         insertFirstParent(L, CreateElmParent(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (findElmParent(L, st.ID) == NULL) {
@@ -120,9 +119,11 @@ void deleteListParent(List1 &L, string st) {
 
 void printInfoParent(List1 L) {
     address1 P = L.first;
+    int i = 1;
     do {
-        cout << P -> info.nama << " " << P -> info.ID << endl;
+        cout << i << ".\nNama\t: " << P -> info.nama << "\nNIM\t: " << P -> info.ID << endl;
         P = P -> next;
+        i++;
     } while (P != L.first);
     cout << endl;
 }

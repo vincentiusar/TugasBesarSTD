@@ -130,9 +130,11 @@ connect findElmBase2(ListBase &L, address1 P, address2 Q) {
 
 void printInfoBase(ListBase L) {
     connect P = L.first;
+    int i = 1;
     while (P != NULL) {
-        cout << P -> name -> info.nama << " " << P -> name -> info.ID << " " << P -> matkul -> info.matkul << " " << P -> matkul -> info.dosen << " " << P -> info.kuis << " " << P -> info.uts << " " << P -> info.uas << " " << nilaiRerata(L, P -> matkul -> info.matkul) << " " << P -> info.Index << endl;
+        cout << i << ".\nNama\t\t\t: " << P -> name -> info.nama << "\nNIM\t\t\t: " << P -> name -> info.ID << "\nMata Kuliah\t\t: " << P -> matkul -> info.matkul << "\nDosen\t\t\t: " << P -> matkul -> info.dosen << "\nNilai Kuis\t\t: " << P -> info.kuis << "\nNilai UTS\t\t: " << P -> info.uts << "\nNilai UAS\t\t: " << P -> info.uas << "\nNilai Keseluruhan\t: " << P -> info.rerata << "\nIP\t\t\t: " << P -> info.Index << endl << endl;
         P = P -> next;
+        i++;
     }
     cout << endl;
 }
