@@ -2,7 +2,7 @@
 
 ### Collabolator
 >- Vincentius Arnold Fridolin / **1301190221**<br>
->- Vincent William Jonathan / **add**<br>
+>- Vincent Williams Jonathan / **1301190381**<br>
 
 ### To Do
 >- insert name of students and course
