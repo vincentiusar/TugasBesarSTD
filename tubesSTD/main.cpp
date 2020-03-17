@@ -1,7 +1,7 @@
 #include "listBase.h"
 
 int main() {
-    int choice = 0;
+    int choice = 0, unix_code = 0;
     string st;
     infotypeParent parent;
     infotypeChild child;
@@ -31,11 +31,7 @@ int main() {
         switch(choice) {
         case 1:
             cleared();
-            cout << "Masukkan ID anda : ";
-            cin.get();
-            getline(cin, parent.ID);
-            cout << "Masukkan Nama anda : ";
-            getline(cin, parent.nama);
+            generateID(parent, unix_code);
             insertSortParent(mahasiswa, parent);
             cin.get();
             break;

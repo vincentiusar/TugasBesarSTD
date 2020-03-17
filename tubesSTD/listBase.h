@@ -9,6 +9,7 @@ struct infotypeBase {
     float kuis;
     float uts;
     float uas;
+    float rerata;
     string Index;
 };
 
@@ -45,4 +46,5 @@ void printInfoBase(ListBase L);
 float nilaiMedianMatkul(ListBase L, string st);
 float nilaiRerata(ListBase L, string st);
 void hitungIndex(connect &R);
+void printReverse(List1 L);
 void cleared();

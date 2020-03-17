@@ -4,6 +4,57 @@ void createListParent(List1 &L) {
     L.first = NULL;
 }
 
+void generateID(infotypeParent &P, int &jumlah) {
+    string nama, fakultas, jurusan, angkatan;
+    cout << "Masukkan nama anda : ";
+    cin >> nama;
+    cout << "Masukkan fakultas anda (Informatika, Industri, Elektro) : ";
+    cin >> fakultas;
+    jumlah++;
+    string id_x = "";
+    if (fakultas == "informatika" || fakultas == "Informatika") {
+        id_x += "130";
+        cout << "Masukkan jurusan anda (Informatika, komputer) : ";
+        cin >> jurusan;
+        if (jurusan == "informatika" || fakultas == "Informatika") {
+            id_x += '1';
+        } else if (jurusan == "komputer" || jurusan == "Komputer") {
+            id_x += '2';
+        }
+    } else if (fakultas == "Fisika" || fakultas == "fisika") {
+        id_x += "120";
+        cout << "Masukkan jurusan anda (fisika) : ";
+        cin >> jurusan;
+        if (jurusan == "fisika" || jurusan == "Fisika") {
+            id_x += '1';
+        }
+    } else {
+        id_x += "110";
+        cout << "Masukkan jurusan anda (telekomunikasi) : ";
+        cin >> jurusan;
+        if (jurusan == "telekomunikasi" || jurusan == "Telekomunikasi") { 
+            id_x += '1';
+        }
+    }
+    cout << "Masukkan anda angkatan berapa (2000 - 2999): ";
+    cin >> angkatan;
+    id_x += angkatan[2]; id_x += angkatan[3];
+    stringstream ss;
+    ss << jumlah;
+    string mahasiswa_ke = ss.str();
+    if (mahasiswa_ke.size() == 1) {
+        id_x += "000"; id_x += mahasiswa_ke;
+    } else if (mahasiswa_ke.size() == 2) {
+        id_x += "00"; id_x += mahasiswa_ke;
+    } else if (mahasiswa_ke.size() == 3) { 
+        id_x += "0"; id_x += mahasiswa_ke;
+    } else {
+        id_x += mahasiswa_ke;
+    }
+    P.nama = nama;
+    P.ID = id_x;
+}
+
 address1 CreateElmParent(infotypeParent st) {
     address1 P = new parent;
     P -> info = st;

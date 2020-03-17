@@ -56,6 +56,16 @@ float nilaiRerata(ListBase L, string st) {
     }
 }
 
+void printReverse(List1 L) {
+    address1 P = L.first;
+    int i = 1;
+    do {
+        P = P -> prev;
+        cout << i << ".\nNama\t: " << P -> info.nama << "\nNIM\t: " << P -> info.ID << endl;
+        i++;
+    } while (P != L.first);
+}
+
 void cleared() {
     system("cls");
 }
