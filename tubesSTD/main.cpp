@@ -1,7 +1,7 @@
 #include "listBase.h"
 
 int main() {
-    int choice = 0, unix_code = 0;
+    int choice = 0;// unix_code = 0;
     string st;
     infotypeParent parent;
     infotypeChild child;
@@ -31,7 +31,17 @@ int main() {
         switch(choice) {
         case 1:
             cleared();
-            generateID(parent, unix_code);
+            // Penggunaan generateID untuk menggenerate NIM sendiri. Namun terjadi 
+            // bug karena ketika menggenerate ID, jika nama, jurusan, fakultas, dan
+            // angkatan sudah pernah ada, maka tidak akan terjadi generate ID.
+            // Sehingga dampaknya adalah dalam List adalah dipastikan tidak ada
+            // data yang memiliki ID sama.
+            //generateID(mahasiswa, parent, unix_code);
+            cout << "Masukkan nama anda : ";
+            cin.get();
+            getline(cin, parent.nama);
+            cout << "Masukkan NIM anda : ";
+            getline(cin, parent.ID);
             insertSortParent(mahasiswa, parent);
             cin.get();
             break;

@@ -20,7 +20,7 @@ struct List1 {
     address1 first;
 };
 
-void generateID(infotypeParent &P, int &jumlah);
+//void generateID(List1 L, infotypeParent &P, int &jumlah);
 void createListParent(List1 &L);
 address1 CreateElmParent(infotypeParent st);
 void insertFirstParent(List1 &L, address1 P);
