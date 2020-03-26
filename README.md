@@ -1,5 +1,5 @@
-# **TugasBesarSTD**
-> Tugas Besar Semester 2:Struktur Data
+# **TugasBesarSTD (D4)**
+> Tugas Besar Semester 2 :Struktur Data
 
 # Data Mahasiswa dan Mata Kuliah
 
