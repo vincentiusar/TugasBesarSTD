@@ -1,4 +1,7 @@
 # **TugasBesarSTD**
+> Tugas Besar Semester 2:Struktur Data
+
+# Data Mahasiswa dan Mata Kuliah
 
 ### Collabolator
 >- Vincentius Arnold Fridolin / **1301190221**<br>
