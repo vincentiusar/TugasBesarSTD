@@ -77,6 +77,7 @@ void deleteListBase1(ListBase &L, connect P, connect Q) {
         cout << "Maaf, nama tidak ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (Q == NULL) {
         if (P != NULL) {
+            cleared();
             callDeleteBase(L, P);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
         } else {
@@ -84,6 +85,7 @@ void deleteListBase1(ListBase &L, connect P, connect Q) {
         }
     } else if (P == NULL) {
         if (Q != NULL) {    
+            cleared();
             callDeleteBase(L, Q);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
         } else {
@@ -134,7 +136,6 @@ connect findElmBase2(ListBase &L, address1 P, address2 Q) {
 
 void printInfoBase(ListBase L) {
     connect P = L.first;
-    cout << "BAMBANK !@!@";
     int i = 1;
     while (P != NULL) {
         cout << i << ".\nNama\t\t\t: " << P -> name -> info.nama << "\nNIM\t\t\t: " << P -> name -> info.ID << "\nMata Kuliah\t\t: " << P -> matkul -> info.matkul << "\nDosen\t\t\t: " << P -> matkul -> info.dosen << "\nNilai Kuis\t\t: " << P -> info.kuis << "\nNilai UTS\t\t: " << P -> info.uts << "\nNilai UAS\t\t: " << P -> info.uas << "\nNilai Keseluruhan\t: " << P -> info.rerata << "\nIP\t\t\t: " << P -> info.Index << endl << endl;

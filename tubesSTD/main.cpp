@@ -69,6 +69,7 @@ int main() {
             if (P != NULL && Q != NULL && R == NULL) {
                 insertBase(Base, CreateElmBase(P, Q));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
+                cin.get();
             } else {
                 cout << "Maaf, anda tidak terdaftar dalam mahasiswa atau mata kuliah tidak terdaftar\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
             }
@@ -103,6 +104,7 @@ int main() {
                     deleteListBase1(Base, NULL, R);
                     R = findElmBase1(Base, NULL, Q);
                 }
+                cout << "Program Run Success! [Press Enter to Continue]. . .";
                 cin.get();
             } else {
                 cout << "Maaf. Anda pilih apa?\n\n";
