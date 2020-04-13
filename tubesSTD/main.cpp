@@ -66,7 +66,6 @@ int main() {
             P = findElmParent(mahasiswa, parent.ID);
             Q = findElmChild(matakuliah, child.matkul);
             R = findElmBase2(Base, P, Q);
-            cout << P << " " << Q << R << "dadaw" << endl;
             if (P != NULL && Q != NULL && R == NULL) {
                 insertBase(Base, CreateElmBase(P, Q));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
