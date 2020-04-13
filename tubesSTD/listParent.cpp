@@ -173,10 +173,12 @@ void deleteListParent(List1 &L, string st) {
 void printInfoParent(List1 L) {
     address1 P = L.first;
     int i = 1;
-    do {
-        cout << i << ".\nNama\t: " << P -> info.nama << "\nNIM\t: " << P -> info.ID << endl;
-        P = P -> next;
-        i++;
-    } while (P != L.first);
+    if (P != NULL) {
+        do {
+            cout << i << ".\nNama\t: " << P -> info.nama << "\nNIM\t: " << P -> info.ID << endl;
+            P = P -> next;
+            i++;
+        } while (P != L.first);
+    }
     cout << endl;
 }
