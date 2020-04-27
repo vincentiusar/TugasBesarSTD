@@ -39,7 +39,8 @@ void deleteListBase1(ListBase &L, connect P, connect Q);
 void deleteListBase2(ListBase &L, connect P, connect Q);
 connect findElmBase1(ListBase &L, address1 P, address2 Q);
 connect findElmBase2(ListBase &L, address1 P, address2 Q);
-void printInfoBase(ListBase L);
+void printAllRelation(ListBase L, List1 P, List2 Q);
+void printChildofParent(ListBase L, List1 P, List2 Q, string ID);
 
 //-----------------------
 

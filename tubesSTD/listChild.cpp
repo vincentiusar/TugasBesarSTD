@@ -27,16 +27,15 @@ void insertLastChild(List2 &L, address2 P) {
 }
 
 void insertSortChild(List2 &L, infotypeChild st) {
-    address2 P, Q;
-    P = L.first;
+    address2 P = L.first, Q;
     if (P == NULL) {
         insertFirstChild(L, CreateElmChild(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
-    } else if (P -> info.matkul > st.matkul && findElmChild(L, st.matkul) == NULL) {
+    } else if (P -> info.kodeMatkul > st.kodeMatkul && findElmChild(L, st.kodeMatkul) == NULL) {
         insertFirstChild(L, CreateElmChild(st));
         cout << "Program Run Success! [Press Enter to Continue]. . .";
-    } else if (findElmChild(L, st.matkul) == NULL) {
-        while (P != NULL && P -> info.matkul < st.matkul) {
+    } else if (findElmChild(L, st.kodeMatkul) == NULL) {
+        while (P != NULL && P -> info.kodeMatkul < st.kodeMatkul) {
             Q = P;
             P = P -> next; 
         }
@@ -53,7 +52,7 @@ void insertSortChild(List2 &L, infotypeChild st) {
 
 address2 findElmChild(List2 &L, string X){
     address2 P = L.first;
-    while (P != NULL && P -> info.matkul != X) {
+    while (P != NULL && P -> info.kodeMatkul != X) {
         P = P -> next;
     }
     return P;
@@ -77,6 +76,7 @@ void deleteLastChild(List2 &L, address2 &P) {
     }
     P = Q -> next;
     Q -> next = NULL;
+    L.last = Q;
 }
 
 void deleteListChild(List2 &L, string st) {
@@ -87,7 +87,7 @@ void deleteListChild(List2 &L, string st) {
         } else if (P -> next != NULL) {
             P = L.first;
             address2 Q;
-            while (P != NULL && P -> info.matkul != st) {
+            while (P != NULL && P -> info.kodeMatkul != st) {
                 Q = P;
                 P = P -> next;
             }
@@ -95,6 +95,7 @@ void deleteListChild(List2 &L, string st) {
         } else if (P = L.last) {
             deleteLastChild(L, P);
         }
+        delete P;
     }
 }
 
@@ -102,7 +103,7 @@ void printInfoChild(List2 L) {
     address2 P = L.first;
     int i = 1;
     while (P != NULL) {
-        cout << i << ".\nMata Kuliah\t: " << P -> info.matkul << "\nDosen\t\t: " << P -> info.dosen << endl;
+        cout << i << ". Mata Kuliah\t: " << P -> info.matkul << "\t||\tKode\t: " << P -> info.kodeMatkul << endl;
         P = P -> next;
         i++;
     }

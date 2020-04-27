@@ -4,7 +4,7 @@ using namespace std;
 
 struct infotypeChild {
     string matkul;
-    string dosen;
+    string kodeMatkul;
 };
 
 typedef struct child *address2;

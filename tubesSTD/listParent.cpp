@@ -4,7 +4,7 @@ void createListParent(List1 &L) {
     L.first = NULL;
 }
 
-// void generateID(List1 L, infotypeParent &P, int &jumlah) {
+// void generateID(List1 L, infotypeParent &P, int &jumlah) {           // fungsi auto generate NIM.
 //     string nama, fakultas, jurusan, angkatan;
 //     cout << "Masukkan nama anda : ";
 //     cin >> nama;
@@ -51,7 +51,7 @@ void createListParent(List1 &L) {
 //     } else {
 //         id_x += mahasiswa_ke;
 //     }
-//     if ()
+//   
 //     P.nama = nama;
 //     P.ID = id_x;
 //     cout << "Berikut ini adalah NIM anda : " << P.ID;
@@ -162,11 +162,12 @@ void deleteLastParent(List1 &L, address1 &P) {
 void deleteListParent(List1 &L, string st) {
     address1 P = findElmParent(L, st);
     if (P != NULL) {
-        if (P = L.first) {
+        if (P == L.first) {
             deleteFirstParent(L, P);
         } else if (P -> next != NULL && P -> prev != NULL) {
             deleteAfterParent(L, P -> prev, P);
         }
+        delete P;
     }
 }
 
@@ -175,7 +176,7 @@ void printInfoParent(List1 L) {
     int i = 1;
     if (P != NULL) {
         do {
-            cout << i << ".\nNama\t: " << P -> info.nama << "\nNIM\t: " << P -> info.ID << endl;
+            cout << i << ". Nama\t: " << P -> info.nama << "\t||\tNIM\t: " << P -> info.ID << endl;
             P = P -> next;
             i++;
         } while (P != L.first);
