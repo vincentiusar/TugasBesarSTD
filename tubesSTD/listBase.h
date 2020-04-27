@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
 #include "listParent.h"
 #include "listChild.h"
 
@@ -47,5 +48,6 @@ void printChildofParent(ListBase L, List1 P, List2 Q, string ID);
 float nilaiMedianMatkul(ListBase L, string st);
 float nilaiRerata(ListBase L, string st);
 void hitungIndex(connect &R);
-void printReverse(List1 L);
+void printData(connect R, address1 P, address2 Q);
+void toText(ListBase L, List1 P, List2 Q);
 void cleared();

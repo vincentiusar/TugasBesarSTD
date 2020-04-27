@@ -17,18 +17,19 @@ int main() {
     cin.get();
     do {
         cleared();
-        cout<<"Menu"<<endl;
-        cout<<"1. insert list nama"<<endl;
-        cout<<"2. insert list mata kuliah"<<endl;
-        cout<<"3. insert data mahasiswa yang mengambil mata kuliah dan nilainya"<<endl;
-        cout<<"4. delete nama / mata kuliah mahasiswa"<<endl;
-        cout<<"5. delete data mahasiswa yang mengambil mata kuliah"<<endl;
-        cout<<"6. mencari data mahasiswa dan menampilkan data"<<endl;
-        cout<<"7. print mahasiswa terdaftar / mata kuliah terdaftar / Data Lengkap Mahasiswa"<<endl;
-        cout<<"8. mencari median kodeMatkul"<<endl;
-        cout<<"9. mencari rata-rata nilai kodeMatkul"<<endl;
-        cout<<"0. Exit"<<endl;
-        cout<<"input choice: ";
+        cout << "Menu" << endl;
+        cout << "1. Insert list nama" << endl;
+        cout << "2. Insert list mata kuliah" << endl;
+        cout << "3. Insert data mahasiswa yang mengambil mata kuliah dan nilainya" << endl;
+        cout << "4. Delete nama / mata kuliah mahasiswa" << endl;
+        cout << "5. Delete data mahasiswa yang mengambil mata kuliah" << endl;
+        cout << "6. Mencari data mahasiswa dan menampilkan data" << endl;
+        cout << "7. Print mahasiswa terdaftar / mata kuliah terdaftar / Data Lengkap Mahasiswa" << endl;
+        cout << "8. Mencari median kodeMatkul" << endl;
+        cout << "9. Mencari rata-rata nilai kodeMatkul" << endl;
+        cout << "10. Export data mahasiswa ke dalam .txt" << endl;
+        cout << "0. Exit" << endl;
+        cout << "input choice: ";
         cin >> choice;
         switch(choice) {
         case 1:
@@ -104,7 +105,8 @@ int main() {
                 cin.get();
             } else if (st == "2") {
                 cleared();
-                cout << "Masukkan mata kuliah : ";
+                printInfoChild(matakuliah);
+                cout << "Masukkan kode mata kuliah : ";
                 cin.get();
                 getline(cin, child.kodeMatkul);
                 Q = findElmChild(matakuliah, child.kodeMatkul);
@@ -148,7 +150,7 @@ int main() {
             R = findElmBase2(Base, P, Q);
             if (R != NULL) {
                 cout << "Data ditemukan!" << endl;
-                printChildofParent(Base, mahasiswa, matakuliah, parent.ID);
+                printData(R, P, Q);
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
                 cin.get();
             } else {
@@ -205,7 +207,11 @@ int main() {
             }
             cin.get();
             break;
-        case 10:
+        case 10: 
+            cleared();
+            toText(Base, mahasiswa, matakuliah);
+            break;
+        case 11:
             cleared();
             printInfoParent(mahasiswa);
             printInfoChild(matakuliah);

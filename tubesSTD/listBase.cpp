@@ -132,19 +132,21 @@ connect findElmBase2(ListBase &L, address1 P, address2 Q) {
 }
 
 void printAllRelation(ListBase L, List1 P, List2 Q) {
-    address2 Q1;
+    address2 Q1; address1 P1 = P.first;
     int i = 1;
     cout << "Berikut data Parent dan setiap child untuk parent tersebut : " << endl;
-    for (address1 P1 = P.first; P1 != NULL; P1 = P1 -> next) {
-        cout << i++ << ".\nNama\t\t\t: " << P1 -> info.ID << "\nNIM\t\t\t: " << P1 -> info.nama << endl;
-        cout << "Mengambil mata kuliah dengan data sebagai berikut : ";
+    do {
+        cout << i++ << ".\nNIM\t\t\t: " << P1 -> info.ID << "\nNama\t\t\t: " << P1 -> info.nama << endl;
+        cout << "Mengambil mata kuliah dengan data sebagai berikut : " << endl << endl;
         int j = 1;
         for (connect R = L.first; R != NULL; R = R -> next) {
             if (R -> name == P1) {
-                cout << j++ << ". Mata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
+                cout << j++ << ". \nMata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
             }
         }
-    }
+        P1 = P1 -> next;
+        cout << "----------------------------------" << endl;
+    } while (P1 != P.first);
     cout << endl;
 }
 
@@ -152,9 +154,9 @@ void printChildofParent(ListBase L, List1 P, List2 Q, string ID) {
     address1 P1 = findElmParent(P, ID);
     for (connect R = L.first; R != NULL; R = R -> next) {
         int j = 1;
-        cout << P1 -> info.nama << "Mengambil mata kuliah : " << endl;
+        cout << P1 -> info.nama << "Mengambil mata kuliah : " << endl << endl;
         if (R -> name == P1) {
-            cout << j++ << ". Mata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
+            cout << j++ << ". Mata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
         }
     }
 }
