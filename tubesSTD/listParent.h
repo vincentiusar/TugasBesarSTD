@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 struct infotypeParent {
     string nama;
     string ID;

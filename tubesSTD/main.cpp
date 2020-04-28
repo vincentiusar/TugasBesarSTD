@@ -1,5 +1,8 @@
 #include "listBase.h"
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 int main() {
     int choice = 0;// unix_code = 0;   // unix_code : kode unik jumlah mahasiswa yang ada.
     string st;
@@ -182,10 +185,12 @@ int main() {
             break;
         case 8:
             cleared();
-            cout << "Masukkan mata kuliah : ";
+            printInfoChild(matakuliah);
+            cout << "Masukkan kode mata kuliah : ";
             cin.get();
             getline(cin, child.kodeMatkul);
-            if (findElmBase1(Base, NULL, findElmChild(matakuliah, child.kodeMatkul)) != NULL) {
+            Q = findElmChild(matakuliah, child.kodeMatkul);
+            if (findElmBase1(Base, NULL, Q) != NULL) {
                 cout << nilaiMedianMatkul(Base, child.kodeMatkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {

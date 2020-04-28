@@ -1,8 +1,11 @@
 #include <iostream>
-#include <cstdlib>
-#include <fstream>
+#include <cstdlib>      // for clear screen
+#include <fstream>      // for create txt file
 #include "listParent.h"
 #include "listChild.h"
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 using namespace std;
 

@@ -1,5 +1,8 @@
 #include "listBase.h"
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void hitungIndex(connect &R) {
     float rata = (R -> info.kuis * (0.2) + R -> info.uts * (0.4) + R -> info.uas * (0.4));
     if (rata >= 80) {
@@ -20,12 +23,15 @@ void hitungIndex(connect &R) {
     R -> info.rerata = rata;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 float nilaiMedianMatkul(ListBase L, string st) {
     float arr[100] = {0};
     int i = 0;
     connect P = L.first;
     while (P != NULL) {
-        if (P -> matkul -> info.matkul == st) {
+        if (P -> matkul -> info.kodeMatkul == st) {
             arr[i] = (P -> info.kuis * (0.2) + P -> info.uts * (0.4) + P -> info.uas * (0.4));
             i++;
         }
@@ -38,12 +44,15 @@ float nilaiMedianMatkul(ListBase L, string st) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 float nilaiRerata(ListBase L, string st) {
     connect P = L.first;
     float sum = 0;
     int nData = 0;
     while (P != NULL) {
-        if (P -> matkul -> info.matkul == st) {
+        if (P -> matkul -> info.kodeMatkul == st) {
             sum += (P -> info.kuis * (0.2) + P -> info.uts * (0.4) + P -> info.uas * (0.4));
             nData++;
         }
@@ -56,14 +65,23 @@ float nilaiRerata(ListBase L, string st) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void printData(connect R, address1 P, address2 Q) {
     cout << "Berikut data anda : " << endl; 
     cout << "Nama\t\t\t" << P -> info.nama << "\nMata Kuliah\t\t: " << Q -> info.matkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void cleared() {
     system("cls");
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void toText(ListBase L, List1 P, List2 Q) {
     string myfilename;

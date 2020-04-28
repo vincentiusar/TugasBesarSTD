@@ -1,9 +1,15 @@
 #include "listBase.h"
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void createListBase(ListBase &L) {
     L.first = NULL;
     L.last = NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 connect CreateElmBase(address1 P, address2 Q) {
     connect R = new Base;
@@ -21,6 +27,9 @@ connect CreateElmBase(address1 P, address2 Q) {
     return R;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void insertBase(ListBase &L, connect R) {
     if (L.first == NULL) {
         L.first = R;
@@ -31,6 +40,9 @@ void insertBase(ListBase &L, connect R) {
         L.last = R;
     }
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void deleteFirstBase(ListBase &L, connect &R) {
     if (L.first == L.last) {
@@ -46,6 +58,9 @@ void deleteFirstBase(ListBase &L, connect &R) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteAfterBase(ListBase &L, connect Prec, connect &P) {
     P = Prec -> next;
     Prec -> next = P -> next;
@@ -54,6 +69,9 @@ void deleteAfterBase(ListBase &L, connect Prec, connect &P) {
     P -> prev = NULL;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteLastBase(ListBase &L, connect &R) {
     R = L.last;
     L.last = R -> prev;
@@ -61,6 +79,9 @@ void deleteLastBase(ListBase &L, connect &R) {
     R -> prev = NULL;
     R -> next = NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void callDeleteBase(ListBase &L, connect &R) {
     if (R == L.first) {
@@ -71,6 +92,9 @@ void callDeleteBase(ListBase &L, connect &R) {
         deleteLastBase(L, R);
     }
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void deleteListBase1(ListBase &L, connect P, connect Q) {
     if (P == NULL && Q == NULL) {
@@ -90,6 +114,9 @@ void deleteListBase1(ListBase &L, connect P, connect Q) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteListBase2(ListBase &L, connect P, connect Q) {
     if (P != NULL && Q != NULL) {    
         connect R = findElmBase2(L, P -> name, Q -> matkul);
@@ -103,22 +130,28 @@ void deleteListBase2(ListBase &L, connect P, connect Q) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 connect findElmBase1(ListBase &L, address1 P, address2 Q) {
     if (Q == NULL) {
         connect R = L.first;
-        while (R != NULL && R -> name -> info.ID != P -> info.ID) {
+        while (R != NULL && R -> name != P) {
             R = R -> next;
         }
         return R;
     } else if (P == NULL) {
         connect R = L.first;
-        while (R != NULL && R -> matkul -> info.matkul != Q -> info.matkul) {
+        while (R != NULL && R -> matkul != Q) {
             R = R -> next;
         }
         return R;
     }
     return NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 connect findElmBase2(ListBase &L, address1 P, address2 Q) {
     if (P != NULL && Q != NULL) {
@@ -130,6 +163,9 @@ connect findElmBase2(ListBase &L, address1 P, address2 Q) {
     }
     return NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void printAllRelation(ListBase L, List1 P, List2 Q) {
     address2 Q1; address1 P1 = P.first;
@@ -149,6 +185,9 @@ void printAllRelation(ListBase L, List1 P, List2 Q) {
     } while (P1 != P.first);
     cout << endl;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void printChildofParent(ListBase L, List1 P, List2 Q, string ID) {
     address1 P1 = findElmParent(P, ID);
