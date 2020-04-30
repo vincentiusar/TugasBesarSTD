@@ -171,18 +171,20 @@ void printAllRelation(ListRelation L, List1 P, List2 Q) {
     address2 Q1; address1 P1 = P.first;
     int i = 1;
     cout << "Berikut data Parent dan setiap child untuk parent tersebut : " << endl;
-    do {
-        cout << i++ << ".\nNIM\t\t\t: " << P1 -> info.ID << "\nNama\t\t\t: " << P1 -> info.nama << endl;
-        cout << "Mengambil mata kuliah dengan data sebagai berikut : " << endl << endl;
-        int j = 1;
-        for (connect R = L.first; R != NULL; R = R -> next) {
-            if (R -> name == P1) {
-                cout << j++ << ". \nMata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
+    if (P1 != NULL) {
+        do {
+            cout << i++ << ".\nNIM\t\t\t: " << P1 -> info.ID << "\nNama\t\t\t: " << P1 -> info.nama << endl;
+            cout << "Mengambil mata kuliah dengan data sebagai berikut : " << endl << endl;
+            int j = 1;
+            for (connect R = L.first; R != NULL; R = R -> next) {
+                if (R -> name == P1) {
+                    cout << j++ << ". \nMata Kuliah\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t: " << R -> info.kuis << "\nNilai UTS\t\t: " << R -> info.uts << "\nNilai UAS\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t: " << R -> info.Index << endl << endl;
+                }
             }
-        }
-        P1 = P1 -> next;
-        cout << "----------------------------------" << endl;
-    } while (P1 != P.first);
+            P1 = P1 -> next;
+            cout << "----------------------------------" << endl;
+        } while (P1 != P.first);
+    }
     cout << endl;
 }
 
