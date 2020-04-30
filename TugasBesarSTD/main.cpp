@@ -1,4 +1,4 @@
-#include "listBase.h"
+#include "listRelation.h"
 
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
@@ -11,11 +11,11 @@ int main() {
     infotypeChild child;
     List1 mahasiswa;
     List2 matakuliah;
-    ListBase Base;
+    ListRelation Relation;
     connect R;
     createListParent(mahasiswa);
     createListChild(matakuliah);
-    createListBase(Base);
+    createListRelation(Relation);
     cout << "|| PROGRAM MAHASISWA DAN MATA KULIAH ||\n\nProgram ini menyatakan hubungan mahasiswa dengan mata kuliah.\nIsi dari data mahasiswa adalah NIM dan nama.\nSementara isi data dari mata kuliah adalah kode matakuliah dan matakuliah.\nKeduanya dihubungkan oleh List relasi yang berisi pointer ke parent, child,\ndan di dalam list relasi terdapat 3 nilai integer serta index (nilai).\n\nDemikian penjelasan singkat ini.\n\n[Press Enter to Continue]. . .";
     cin.get();
     do {
@@ -37,10 +37,10 @@ int main() {
         switch(choice) {
         case 1:
             cleared();
-            // Penggunaan generateID untuk menggenerate NIM sendiri. Namun 
+            // Penggunaan generateID untuk menggenerate NIM sendiri. Namun
             // ketika menggenerate ID, terdapat 2 sudut pandang. Pertama jika
             // kita memandang bahwa nama misal "kevin" sudah terdaftar, maka tidak
-            // boleh ada kevin lagi yang terdaftar. Kedua jika kita memandang nama 
+            // boleh ada kevin lagi yang terdaftar. Kedua jika kita memandang nama
             // "kevin" pertama adalah seorang bernama kevin, kemudian ketika ada
             // nama "kevin" didaftarkan lagi, maka kevin tersebut bukan kevin yang
             // tadi sudah mendaftar. Sehingga dampaknya adalah dalam List adalah ada
@@ -74,9 +74,9 @@ int main() {
             getline(cin, child.kodeMatkul);
             P = findElmParent(mahasiswa, parent.ID);
             Q = findElmChild(matakuliah, child.kodeMatkul);
-            R = findElmBase2(Base, P, Q);
+            R = findElmRelation2(Relation, P, Q);
             if (P != NULL && Q != NULL && R == NULL) {
-                insertBase(Base, CreateElmBase(P, Q));
+                insertRelation(Relation, CreateElmRelation(P, Q));
                 cout << "Program Run Success! [Press Enter to Continue]. . .";
                 cin.get();
             } else {
@@ -95,11 +95,11 @@ int main() {
                 getline(cin, parent.ID);
                 P = findElmParent(mahasiswa, parent.ID);
                 if (P != NULL) {
-                    R = findElmBase1(Base, P, NULL);
+                    R = findElmRelation1(Relation, P, NULL);
                     deleteListParent(mahasiswa, parent.ID);
                     while (R != NULL) {
-                        deleteListBase1(Base, R, NULL);
-                        R = findElmBase1(Base, P, NULL);
+                        deleteListRelation1(Relation, R, NULL);
+                        R = findElmRelation1(Relation, P, NULL);
                     }
                     cout << "Program Run Success! [Press Enter to Continue]. . .";
                 } else {
@@ -114,11 +114,11 @@ int main() {
                 getline(cin, child.kodeMatkul);
                 Q = findElmChild(matakuliah, child.kodeMatkul);
                 if (Q != NULL) {
-                    R = findElmBase1(Base, NULL, Q);
+                    R = findElmRelation1(Relation, NULL, Q);
                     deleteListChild(matakuliah, child.kodeMatkul);
                     while (R != NULL) {
-                        deleteListBase1(Base, NULL, R);
-                        R = findElmBase1(Base, NULL, Q);
+                        deleteListRelation1(Relation, NULL, R);
+                        R = findElmRelation1(Relation, NULL, Q);
                     }
                     cout << "Program Run Success! [Press Enter to Continue]. . .";
                 } else {
@@ -141,7 +141,7 @@ int main() {
             getline(cin, child.kodeMatkul);
             P = findElmParent(mahasiswa, parent.ID);
             Q = findElmChild(matakuliah, child.kodeMatkul);
-            deleteListBase2(Base, findElmBase1(Base, P, NULL), findElmBase1(Base, NULL, Q));
+            deleteListRelation2(Relation, findElmRelation1(Relation, P, NULL), findElmRelation1(Relation, NULL, Q));
             cin.get();
             break;
         case 6:
@@ -150,7 +150,7 @@ int main() {
             P = findElmParent(mahasiswa, parent.ID);
             cout << "Masukkan kode mata kuliah : "; cin >> child.kodeMatkul;
             Q = findElmChild(matakuliah, child.kodeMatkul);
-            R = findElmBase2(Base, P, Q);
+            R = findElmRelation2(Relation, P, Q);
             if (R != NULL) {
                 cout << "Data ditemukan!" << endl;
                 printData(R, P, Q);
@@ -173,10 +173,10 @@ int main() {
             } else if (st == "3") {
                 cout << "1. Print All Relation / 2. Print data dari seorang mahasiswa (1 / 2) : "; cin >> st;
                 if (st == "1") {
-                    printAllRelation(Base, mahasiswa, matakuliah);
+                    printAllRelation(Relation, mahasiswa, matakuliah);
                 } else if (st == "2") {
                     cout << "Masukkan ID mahasiswa : "; cin >> st;
-                    printChildofParent(Base, mahasiswa, matakuliah, st);
+                    printChildofParent(Relation, mahasiswa, matakuliah, st);
                 }
             }
             cout << "Program Run Success! [Press Enter to Continue]. . .";
@@ -190,8 +190,8 @@ int main() {
             cin.get();
             getline(cin, child.kodeMatkul);
             Q = findElmChild(matakuliah, child.kodeMatkul);
-            if (findElmBase1(Base, NULL, Q) != NULL) {
-                cout << nilaiMedianMatkul(Base, child.kodeMatkul);
+            if (findElmRelation1(Relation, NULL, Q) != NULL) {
+                cout << nilaiMedianMatkul(Relation, child.kodeMatkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
@@ -204,23 +204,26 @@ int main() {
             cout << "Masukkan kode mata kuliah : ";
             cin.get();
             getline(cin, child.kodeMatkul);
-            if (findElmBase1(Base, NULL, findElmChild(matakuliah, child.kodeMatkul)) != NULL) {
-                cout << nilaiRerata(Base, child.kodeMatkul);
+            if (findElmRelation1(Relation, NULL, findElmChild(matakuliah, child.kodeMatkul)) != NULL) {
+                cout << nilaiRerata(Relation, child.kodeMatkul);
                 cout << "\n\nProgram Run Success! [Press Enter to Continue]. . .";
             } else {
                 cout << "Mata Kuliah Tidak Ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
             }
             cin.get();
             break;
-        case 10: 
+        case 10:
             cleared();
-            toText(Base, mahasiswa, matakuliah);
+            toText(Relation, mahasiswa, matakuliah);
+            cout << "Silahkan cek folder di mana program ini disimpan dan cari file.txt anda.\nProgram Run Success! [Press Enter to Continue]. . .";
+            cin.get();
+            cin.get();
             break;
         case 11:
             cleared();
             printInfoParent(mahasiswa);
             printInfoChild(matakuliah);
-            printAllRelation(Base, mahasiswa, matakuliah);
+            printAllRelation(Relation, mahasiswa, matakuliah);
             cin.get();
             cout << "Program Run Success! [Press Enter to Continue]. . .";
             cin.get();

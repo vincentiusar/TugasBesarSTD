@@ -1,8 +1,14 @@
 #include "listChild.h"
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void createListChild(List2 &L) {
     L.first = NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 address2 CreateElmChild(infotypeChild st) {
     address2 P = new child;
@@ -11,20 +17,32 @@ address2 CreateElmChild(infotypeChild st) {
     return P;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void insertFirstChild(List2 &L, address2 P) {
     P -> next = L.first;
     L.first = P;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void insertAfterChild(List2 &L, address2 Prec, address2 P) {
     P -> next = Prec -> next;
     Prec -> next = P;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void insertLastChild(List2 &L, address2 P) {
     L.last -> next = P;
     L.last = P;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void insertSortChild(List2 &L, infotypeChild st) {
     address2 P = L.first, Q;
@@ -50,6 +68,9 @@ void insertSortChild(List2 &L, infotypeChild st) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 address2 findElmChild(List2 &L, string X){
     address2 P = L.first;
     while (P != NULL && P -> info.kodeMatkul != X) {
@@ -58,16 +79,25 @@ address2 findElmChild(List2 &L, string X){
     return P;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteFirstChild(List2 &L, address2 &P) {
     P = L.first;
     L.first = P -> next;
     P -> next = NULL;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteAfterChild(List2 &L, address2 Prec, address2 &P) {
     P -> next = Prec -> next;
     Prec -> next = P -> next;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void deleteLastChild(List2 &L, address2 &P) {
     address2 Q = L.first;
@@ -78,6 +108,9 @@ void deleteLastChild(List2 &L, address2 &P) {
     Q -> next = NULL;
     L.last = Q;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void deleteListChild(List2 &L, string st) {
     if (L.first != NULL) { 
@@ -98,6 +131,9 @@ void deleteListChild(List2 &L, string st) {
         delete P;
     }
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void printInfoChild(List2 L) {
     address2 P = L.first;

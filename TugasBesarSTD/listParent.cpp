@@ -1,8 +1,14 @@
 #include "listParent.h"
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void createListParent(List1 &L) {
     L.first = NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 // void generateID(List1 L, infotypeParent &P, int &jumlah) {           // fungsi auto generate NIM.
 //     string nama, fakultas, jurusan, angkatan;
@@ -57,6 +63,9 @@ void createListParent(List1 &L) {
 //     cout << "Berikut ini adalah NIM anda : " << P.ID;
 // }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 address1 CreateElmParent(infotypeParent st) {
     address1 P = new parent;
     P -> info = st;
@@ -64,6 +73,9 @@ address1 CreateElmParent(infotypeParent st) {
     P -> prev = NULL;
     return P;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void insertFirstParent(List1 &L, address1 P) {
     if (L.first == NULL) {
@@ -79,6 +91,9 @@ void insertFirstParent(List1 &L, address1 P) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void insertAfterParent(List1 &L, address1 Prec, address1 P) {
     P -> next = Prec -> next;
     P -> prev = Prec;
@@ -86,12 +101,18 @@ void insertAfterParent(List1 &L, address1 Prec, address1 P) {
     Prec -> next = P;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void insertlastParent(List1 &L, address1 P) {
     P -> next = L.first;
     P -> prev = L.first -> prev;
     L.first -> prev -> next = P;
     L.first -> prev = P;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 address1 findElmParent(List1 &L, string X) {
     if (L.first != NULL) {
@@ -107,6 +128,9 @@ address1 findElmParent(List1 &L, string X) {
     }
     return NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void insertSortParent(List1 &L, infotypeParent st) {
     if (L.first == NULL) {
@@ -127,6 +151,9 @@ void insertSortParent(List1 &L, infotypeParent st) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteFirstParent(List1 &L, address1 &P) {
     if (L.first -> next == L.first) {
         P = L.first;
@@ -143,6 +170,9 @@ void deleteFirstParent(List1 &L, address1 &P) {
     }
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteAfterParent(List1 &L, address1 Prec, address1 &P) {
     P = Prec -> next;
     P -> next -> prev = Prec;
@@ -151,6 +181,9 @@ void deleteAfterParent(List1 &L, address1 Prec, address1 &P) {
     P -> prev = NULL;
 }
 
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
+
 void deleteLastParent(List1 &L, address1 &P) {
     P = L.first -> prev;
     P -> prev -> next = L.first;
@@ -158,6 +191,9 @@ void deleteLastParent(List1 &L, address1 &P) {
     P -> next = NULL;
     P -> prev = NULL;
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void deleteListParent(List1 &L, string st) {
     address1 P = findElmParent(L, st);
@@ -170,6 +206,9 @@ void deleteListParent(List1 &L, string st) {
         delete P;
     }
 }
+
+// Nama     : Vincentius Arnold fridolin
+// NIM      : 1301190221
 
 void printInfoParent(List1 L) {
     address1 P = L.first;

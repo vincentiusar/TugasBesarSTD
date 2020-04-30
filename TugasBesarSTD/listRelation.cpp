@@ -1,9 +1,9 @@
-#include "listBase.h"
+#include "listRelation.h"
 
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void createListBase(ListBase &L) {
+void createListRelation(ListRelation &L) {
     L.first = NULL;
     L.last = NULL;
 }
@@ -11,8 +11,8 @@ void createListBase(ListBase &L) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-connect CreateElmBase(address1 P, address2 Q) {
-    connect R = new Base;
+connect CreateElmRelation(address1 P, address2 Q) {
+    connect R = new Relation;
     R -> name = P;
     R -> matkul = Q;
     cout << "Masukkan Nilai Kuis Anda : ";
@@ -30,7 +30,7 @@ connect CreateElmBase(address1 P, address2 Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void insertBase(ListBase &L, connect R) {
+void insertRelation(ListRelation &L, connect R) {
     if (L.first == NULL) {
         L.first = R;
         L.last = R;
@@ -44,7 +44,7 @@ void insertBase(ListBase &L, connect R) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void deleteFirstBase(ListBase &L, connect &R) {
+void deleteFirstRelation(ListRelation &L, connect &R) {
     if (L.first == L.last) {
         R = L.first;
         L.last = NULL;
@@ -61,7 +61,7 @@ void deleteFirstBase(ListBase &L, connect &R) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void deleteAfterBase(ListBase &L, connect Prec, connect &P) {
+void deleteAfterRelation(ListRelation &L, connect Prec, connect &P) {
     P = Prec -> next;
     Prec -> next = P -> next;
     P -> next -> prev = Prec;
@@ -72,7 +72,7 @@ void deleteAfterBase(ListBase &L, connect Prec, connect &P) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void deleteLastBase(ListBase &L, connect &R) {
+void deleteLastRelation(ListRelation &L, connect &R) {
     R = L.last;
     L.last = R -> prev;
     L.last -> next = NULL;
@@ -83,32 +83,32 @@ void deleteLastBase(ListBase &L, connect &R) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void callDeleteBase(ListBase &L, connect &R) {
+void callDeleteRelation(ListRelation &L, connect &R) {
     if (R == L.first) {
-        deleteFirstBase(L, R);
+        deleteFirstRelation(L, R);
     } else if (R -> next != NULL && R -> prev != NULL) {
-        deleteAfterBase(L, R -> prev, R);
+        deleteAfterRelation(L, R -> prev, R);
     } else if (R == L.last) {
-        deleteLastBase(L, R);
+        deleteLastRelation(L, R);
     }
 }
 
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void deleteListBase1(ListBase &L, connect P, connect Q) {
+void deleteListRelation1(ListRelation &L, connect P, connect Q) {
     if (P == NULL && Q == NULL) {
         cout << "Maaf, nama tidak ditemukan\n\n" << "Program Run Success! [Press Enter to Continue]. . .";
     } else if (Q == NULL) {
         if (P != NULL) {
             cleared();
-            callDeleteBase(L, P);
+            callDeleteRelation(L, P);
             delete P;
         }
     } else if (P == NULL) {
         if (Q != NULL) {    
             cleared();
-            callDeleteBase(L, Q);
+            callDeleteRelation(L, Q);
             delete Q;
         }
     }
@@ -117,11 +117,11 @@ void deleteListBase1(ListBase &L, connect P, connect Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void deleteListBase2(ListBase &L, connect P, connect Q) {
+void deleteListRelation2(ListRelation &L, connect P, connect Q) {
     if (P != NULL && Q != NULL) {    
-        connect R = findElmBase2(L, P -> name, Q -> matkul);
+        connect R = findElmRelation2(L, P -> name, Q -> matkul);
         if (R != NULL) {
-            callDeleteBase(L, R);
+            callDeleteRelation(L, R);
             cout << "Program Run Success! [Press Enter to Continue]. . .";
         }
         delete R;
@@ -133,7 +133,7 @@ void deleteListBase2(ListBase &L, connect P, connect Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-connect findElmBase1(ListBase &L, address1 P, address2 Q) {
+connect findElmRelation1(ListRelation &L, address1 P, address2 Q) {
     if (Q == NULL) {
         connect R = L.first;
         while (R != NULL && R -> name != P) {
@@ -153,7 +153,7 @@ connect findElmBase1(ListBase &L, address1 P, address2 Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-connect findElmBase2(ListBase &L, address1 P, address2 Q) {
+connect findElmRelation2(ListRelation &L, address1 P, address2 Q) {
     if (P != NULL && Q != NULL) {
         connect R = L.first;
         while (R != NULL && (R -> matkul != Q || R -> name != P)) {
@@ -167,7 +167,7 @@ connect findElmBase2(ListBase &L, address1 P, address2 Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void printAllRelation(ListBase L, List1 P, List2 Q) {
+void printAllRelation(ListRelation L, List1 P, List2 Q) {
     address2 Q1; address1 P1 = P.first;
     int i = 1;
     cout << "Berikut data Parent dan setiap child untuk parent tersebut : " << endl;
@@ -189,7 +189,7 @@ void printAllRelation(ListBase L, List1 P, List2 Q) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void printChildofParent(ListBase L, List1 P, List2 Q, string ID) {
+void printChildofParent(ListRelation L, List1 P, List2 Q, string ID) {
     address1 P1 = findElmParent(P, ID);
     for (connect R = L.first; R != NULL; R = R -> next) {
         int j = 1;

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1588238209 source:c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listchild.cpp
+	"listChild.h"
+
+1587976679 c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listchild.h
+	<iostream>
+
+1588149234 source:c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listparent.cpp
+	"listParent.h"
+
+1588149238 c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listparent.h
+	<iostream>
+	<sstream>
+
+1588237910 source:c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listrelation.cpp
+	"listRelation.h"
+
+1588237905 c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\listrelation.h
+	<iostream>
+	<cstdlib>
+	<fstream>
+	"listParent.h"
+	"listChild.h"
+
+1588238085 source:c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\main.cpp
+	"listRelation.h"
+
+1588238458 source:c:\mingw\c++ program\tugasbesarstd\tugasbesarstd\operation.cpp
+	"listRelation.h"
+

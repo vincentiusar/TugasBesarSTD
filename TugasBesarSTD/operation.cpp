@@ -1,4 +1,4 @@
-#include "listBase.h"
+#include "listRelation.h"
 
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
@@ -26,7 +26,7 @@ void hitungIndex(connect &R) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-float nilaiMedianMatkul(ListBase L, string st) {
+float nilaiMedianMatkul(ListRelation L, string st) {
     float arr[100] = {0};
     int i = 0;
     connect P = L.first;
@@ -47,7 +47,7 @@ float nilaiMedianMatkul(ListBase L, string st) {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-float nilaiRerata(ListBase L, string st) {
+float nilaiRerata(ListRelation L, string st) {
     connect P = L.first;
     float sum = 0;
     int nData = 0;
@@ -83,25 +83,27 @@ void cleared() {
 // Nama     : Vincentius Arnold fridolin
 // NIM      : 1301190221
 
-void toText(ListBase L, List1 P, List2 Q) {
+void toText(ListRelation L, List1 P, List2 Q) {
     string myfilename;
     cout << "Masukkan nama file : "; cin >> myfilename; 
     ofstream myfile(myfilename + ".txt", ofstream::trunc);
     address2 Q1; address1 P1 = P.first;
     int i = 1;
     myfile << "Berikut data Parent dan setiap child untuk parent tersebut : " << endl << endl;
-    do {
-        myfile << i++ << ".\nNIM\t\t\t\t: " << P1 -> info.ID << "\nNama\t\t\t: " << P1 -> info.nama << endl;
-        myfile << "Mengambil mata kuliah dengan data sebagai berikut : " << endl << endl;
-        int j = 1;
-        for (connect R = L.first; R != NULL; R = R -> next) {
-            if (R -> name == P1) {
-                myfile << j++ << ". \nMata Kuliah\t\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t\t: " << R -> info.kuis << "\nNilai UTS\t\t\t: " << R -> info.uts << "\nNilai UAS\t\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t\t: " << R -> info.Index << endl << endl;
+    if (P1 != NULL) {
+        do {
+            myfile << i++ << ".\nNIM\t\t\t\t: " << P1 -> info.ID << "\nNama\t\t\t: " << P1 -> info.nama << endl;
+            myfile << "Mengambil mata kuliah dengan data sebagai berikut : " << endl << endl;
+            int j = 1;
+            for (connect R = L.first; R != NULL; R = R -> next) {
+                if (R -> name == P1) {
+                    myfile << j++ << ". \nMata Kuliah\t\t\t: " << R -> matkul -> info.matkul << "\nKode Matkul\t\t\t: " << R -> matkul -> info.kodeMatkul << "\nNilai Kuis\t\t\t: " << R -> info.kuis << "\nNilai UTS\t\t\t: " << R -> info.uts << "\nNilai UAS\t\t\t: " << R -> info.uas << "\nNilai Keseluruhan\t: " << R -> info.rerata << "\nIndex\t\t\t\t: " << R -> info.Index << endl << endl;
+                }
             }
-        }
-        P1 = P1 -> next;
-        myfile << "----------------------------------" << endl;
-    } while (P1 != P.first);
+            P1 = P1 -> next;
+            myfile << "----------------------------------" << endl;
+        } while (P1 != P.first);
+    }
     myfile << endl;
     myfile.close();
 }
